@@ -1,7 +1,8 @@
 import { Grid } from './grid';
 type Direction = 'Up' | 'Down' | 'Left' | 'Right'; 
 export class Snake {
-public direction: Direction = 'Right'; 
+  public direction: Direction = 'Right';
+  public oldDirection: Direction = 'Right';
   public xCoord: number = 0;
   public yCoord: number = 0;
   public isFirstMove: boolean = true;
@@ -58,7 +59,7 @@ public direction: Direction = 'Right';
     });
   }
 
-  moveSnake(oldX: number, oldY: number) {
-    this.grid.move(this.xCoord, this.yCoord, oldX, oldY);
+  moveSnake(_oldX: number, _oldY: number) {
+    this.grid.move(this);
   }
 }

@@ -12,6 +12,7 @@ export class Cell {
    cell.dataset.y = String(this.y);
    cell.style.gridColumn = String(this.x);
    cell.style.gridRow = String(this.y);
+   
    this.cell = cell;
 
    if (this.container !== null) {
@@ -35,7 +36,7 @@ export class Cell {
 
  public unsetBackground() {
    if (this.cell) {
-     this.cell.style.backgroundColor = 'unset';
+     this.cell.style.backgroundColor = 'white';
      this.isBlack = false;
      this.isApple = false;
    }
