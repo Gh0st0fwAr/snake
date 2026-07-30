@@ -1,0 +1,20 @@
+{
+  "name": "snake",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.38"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.4",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.3",
+    "vite": "^2.9.18"
+  }
+}
