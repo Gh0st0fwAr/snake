@@ -82,8 +82,3 @@ npm run build
 yarn build
 
 ---
-<ElicitationsGroup message="Что вы хотите сделать дальше?">
-<Elicitation label="Добавить примеры кода ключевых классов игры" query="Добавь в документацию змейки примеры кода для классов Snake и Food" query_intent="CLICKABLE_SUGGESTION" />
-<Elicitation label="Разработать конфигурацию CI/CD для GitHub Actions" query="Напиши yaml конфиг для GitHub Actions чтобы автоматически деплоить змейку" query_intent="CLICKABLE_SUGGESTION" />
-<Elicitation label="Создать дорожную карту возможных улучшений игры" query="Добавь в документацию раздел Roadmap с идеями фич для прокачки игры" query_intent="CLICKABLE_SUGGESTION" />
-</ElicitationsGroup>
