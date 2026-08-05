@@ -2,7 +2,7 @@
 
 Классическая змейка на **Vue 3**, **TypeScript** и **Vite** — с темами оформления, адаптивным полем и сохранением выбранного стиля.
 
-**Играть онлайн:** [gh0st0fwar.github.io/Snake](https://gh0st0fwar.github.io/Snake/)
+**Играть онлайн:** [gh0st0fwar.github.io/snake](https://gh0st0fwar.github.io/snake/)
 
 ---
 
@@ -139,10 +139,10 @@ npm run preview   # предпросмотр сборки
 
 ### Деплой на GitHub Pages
 
-Сборка настроена с базовым путём `/Snake/` для хостинга по адресу:
+Сборка настроена с базовым путём `/snake/` (имя репозитория на GitHub — в нижнем регистре) для хостинга по адресу:
 
 ```
-https://gh0st0fwar.github.io/Snake/
+https://gh0st0fwar.github.io/snake/
 ```
 
 1. Выполните `npm run build` — файлы попадут в папку `docs/`.
