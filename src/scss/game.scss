@@ -1,0 +1,218 @@
+@use 'variables' as *;
+
+.game {
+  min-height: 100vh;
+  padding: $game-vertical-padding 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--game-bg);
+  color: var(--text-color);
+  transition: background 0.35s ease, color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--game-pattern, none);
+    opacity: var(--game-pattern-opacity, 0);
+    z-index: 0;
+  }
+}
+
+.game__layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.game__arena {
+  position: relative;
+  flex-shrink: 0;
+  min-width: 240px;
+}
+
+.game__board-host {
+  position: relative;
+}
+
+.game__board {
+  display: grid;
+  gap: var(--board-gap, #{$board-gap});
+  padding: var(--board-padding, 10px);
+  border-radius: var(--board-radius, 12px);
+  background: var(--board-bg);
+  border: var(--board-border-width, 1px) solid var(--board-border);
+  box-shadow: var(--board-shadow);
+}
+
+.game__cell {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--cell-radius, 4px);
+  background-color: var(--cell-empty);
+  box-shadow: var(--cell-empty-shadow, none);
+  border: var(--cell-border, none);
+  transition:
+    background-color 0.12s ease,
+    box-shadow 0.12s ease,
+    transform 0.12s ease;
+}
+
+.game__cell--snake {
+  background-color: var(--cell-snake);
+  box-shadow: var(--cell-snake-shadow, none);
+  border: var(--cell-snake-border, none);
+}
+
+.game__cell--apple {
+  background-color: var(--cell-apple);
+  box-shadow: var(--cell-apple-shadow, none);
+  border: var(--cell-apple-border, none);
+  border-radius: var(--apple-radius, var(--cell-radius, 4px));
+}
+
+.game__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: var(--board-radius, 12px);
+  background: var(--overlay-bg);
+  backdrop-filter: var(--overlay-blur, blur(6px));
+  z-index: 2;
+}
+
+.game__overlay--start,
+.game__overlay--game-over {
+  animation: game-overlay-in 0.35s ease;
+}
+
+.game__btn {
+  appearance: none;
+  border: var(--btn-border, none);
+  cursor: pointer;
+  padding: 14px 28px;
+  border-radius: var(--btn-radius, 999px);
+  font-family: $font-ui;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  box-shadow: var(--btn-shadow);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.game__title {
+  margin: 0;
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 7vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--title-color);
+  text-shadow: var(--title-shadow, none);
+}
+
+.game__themes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 148px;
+}
+
+.game__themes-label {
+  font-family: $font-ui;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+.game__theme-btn {
+  appearance: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: var(--theme-btn-radius, 10px);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  color: var(--text-color);
+  font-family: $font-ui;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    transform: translateX(3px);
+    border-color: var(--theme-accent);
+  }
+}
+
+.game__theme-btn--active {
+  border-color: var(--theme-accent);
+  background: var(--panel-active-bg);
+  box-shadow: var(--panel-active-shadow, none);
+}
+
+@keyframes game-overlay-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 860px) {
+  .game__layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .game__themes {
+    flex-flow: row wrap;
+    justify-content: center;
+    min-width: auto;
+  }
+
+  .game__theme-btn {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+  }
+}

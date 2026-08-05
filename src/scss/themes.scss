@@ -1,0 +1,244 @@
+/* Arcade — классический неон: свечение, тёмный фон */
+.game--theme-arcade {
+  --text-color: #e8f7ff;
+  --game-bg: #070b16;
+  --game-pattern:
+    radial-gradient(circle at 18% 12%, rgba(0, 229, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 82% 88%, rgba(255, 45, 149, 0.1), transparent 36%);
+  --game-pattern-opacity: 1;
+
+  --board-bg: #10162a;
+  --board-border: rgba(0, 229, 255, 0.28);
+  --board-border-width: 1px;
+  --board-radius: 14px;
+  --board-padding: 10px;
+  --board-gap: 2px;
+  --board-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+    0 20px 50px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(0, 229, 255, 0.08);
+
+  --cell-radius: 4px;
+  --apple-radius: 50%;
+  --cell-empty: #1a2238;
+  --cell-empty-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --cell-snake: #00e5ff;
+  --cell-snake-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+    0 0 12px rgba(0, 229, 255, 0.45);
+  --cell-apple: #ff2d95;
+  --cell-apple-shadow: 0 0 14px rgba(255, 45, 149, 0.55);
+
+  --overlay-bg: rgba(7, 11, 22, 0.78);
+  --overlay-blur: blur(6px);
+  --btn-bg: linear-gradient(135deg, #00e5ff 0%, #7c4dff 100%);
+  --btn-text: #07080f;
+  --btn-radius: 999px;
+  --btn-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.25);
+  --title-color: #00e5ff;
+  --title-shadow: 0 0 24px rgba(0, 229, 255, 0.55);
+
+  --panel-bg: rgba(0, 229, 255, 0.06);
+  --panel-border: rgba(0, 229, 255, 0.22);
+  --panel-active-bg: rgba(0, 229, 255, 0.14);
+  --panel-active-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+  --theme-accent: #00e5ff;
+  --theme-btn-radius: 10px;
+}
+
+/* Paper — светлая «тетрадь»: линии, чернила, без свечения */
+.game--theme-paper {
+  --text-color: #2a241c;
+  --game-bg: #e8dfd0;
+  --game-pattern:
+    repeating-linear-gradient(
+      transparent 0,
+      transparent 27px,
+      rgba(80, 110, 160, 0.18) 28px
+    ),
+    linear-gradient(90deg, rgba(200, 80, 70, 0.15) 40px, transparent 41px);
+  --game-pattern-opacity: 1;
+
+  --board-bg: #f7f1e6;
+  --board-border: rgba(60, 45, 30, 0.18);
+  --board-border-width: 1px;
+  --board-radius: 4px;
+  --board-padding: 12px;
+  --board-gap: 3px;
+  --board-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 28px rgba(70, 50, 30, 0.18);
+
+  --cell-radius: 2px;
+  --apple-radius: 2px;
+  --cell-empty: #efe6d8;
+  --cell-empty-shadow: inset 0 0 0 1px rgba(60, 45, 30, 0.06);
+  --cell-snake: #2f3d2c;
+  --cell-snake-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --cell-apple: #c0392b;
+  --cell-apple-shadow: none;
+
+  --overlay-bg: rgba(247, 241, 230, 0.88);
+  --overlay-blur: blur(2px);
+  --btn-bg: #2f3d2c;
+  --btn-text: #f7f1e6;
+  --btn-radius: 6px;
+  --btn-border: 1px solid #1f291e;
+  --btn-shadow: 0 6px 0 #1a2219;
+  --title-color: #c0392b;
+  --title-shadow: none;
+
+  --panel-bg: rgba(47, 61, 44, 0.06);
+  --panel-border: rgba(47, 61, 44, 0.2);
+  --panel-active-bg: rgba(47, 61, 44, 0.12);
+  --theme-accent: #2f3d2c;
+  --theme-btn-radius: 6px;
+}
+
+/* Pixel — «кирпичики» 8-bit: без скруглений, толстая рамка, gap 0 */
+.game--theme-pixel {
+  --text-color: #f4f0e0;
+  --game-bg: #1a1030;
+  --game-pattern:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  --game-pattern-opacity: 1;
+
+  --board-bg: #100820;
+  --board-border: #f0e14a;
+  --board-border-width: 4px;
+  --board-radius: 0;
+  --board-padding: 0;
+  --board-gap: 0;
+  --board-shadow: 8px 8px 0 #000;
+
+  --cell-radius: 0;
+  --apple-radius: 0;
+  --cell-border: 1px solid rgba(0, 0, 0, 0.35);
+  --cell-empty: #2a1848;
+  --cell-snake: #5cff6a;
+  --cell-snake-border: 1px solid #1a8f2a;
+  --cell-snake-shadow: none;
+  --cell-apple: #ff4d6d;
+  --cell-apple-border: 1px solid #a01830;
+  --cell-apple-shadow: none;
+
+  --overlay-bg: rgba(16, 8, 32, 0.86);
+  --overlay-blur: none;
+  --btn-bg: #f0e14a;
+  --btn-text: #1a1030;
+  --btn-radius: 0;
+  --btn-border: 3px solid #000;
+  --btn-shadow: 4px 4px 0 #000;
+  --title-color: #f0e14a;
+  --title-shadow: 3px 3px 0 #000;
+
+  --panel-bg: #2a1848;
+  --panel-border: #f0e14a;
+  --panel-active-bg: #3d2466;
+  --panel-active-shadow: none;
+  --theme-accent: #f0e14a;
+  --theme-btn-radius: 0;
+}
+
+/* Candy — пастель, круглые «конфетки», мягкие тени */
+.game--theme-candy {
+  --text-color: #5a3d55;
+  --game-bg: #ffe8f3;
+  --game-pattern:
+    radial-gradient(circle at 20% 20%, rgba(255, 170, 210, 0.55), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(170, 220, 255, 0.5), transparent 32%);
+  --game-pattern-opacity: 1;
+
+  --board-bg: rgba(255, 255, 255, 0.72);
+  --board-border: rgba(255, 140, 190, 0.45);
+  --board-border-width: 2px;
+  --board-radius: 28px;
+  --board-padding: 14px;
+  --board-gap: 5px;
+  --board-shadow:
+    0 20px 40px rgba(210, 110, 160, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  --cell-radius: 50%;
+  --apple-radius: 50%;
+  --cell-empty: #ffd6ea;
+  --cell-empty-shadow: inset 0 -3px 0 rgba(255, 140, 190, 0.2);
+  --cell-snake: #7ed957;
+  --cell-snake-shadow:
+    inset 0 -4px 0 rgba(50, 120, 40, 0.25),
+    0 4px 10px rgba(90, 180, 70, 0.35);
+  --cell-apple: #ff6b9d;
+  --cell-apple-shadow:
+    inset 0 -4px 0 rgba(180, 40, 90, 0.22),
+    0 4px 12px rgba(255, 100, 150, 0.4);
+
+  --overlay-bg: rgba(255, 240, 248, 0.82);
+  --overlay-blur: blur(8px);
+  --btn-bg: linear-gradient(135deg, #ff8ec8 0%, #a78bfa 100%);
+  --btn-text: #fff;
+  --btn-radius: 999px;
+  --btn-shadow: 0 10px 24px rgba(200, 100, 170, 0.35);
+  --title-color: #e056a0;
+  --title-shadow: 0 4px 0 rgba(255, 255, 255, 0.8);
+
+  --panel-bg: rgba(255, 255, 255, 0.65);
+  --panel-border: rgba(255, 140, 190, 0.4);
+  --panel-active-bg: rgba(255, 140, 190, 0.25);
+  --theme-accent: #e056a0;
+  --theme-btn-radius: 999px;
+}
+
+/* Noir — жёсткий контраст, тонкая сетка, «киношный» кадр */
+.game--theme-noir {
+  --text-color: #f2f2f2;
+  --game-bg: #050505;
+  --game-pattern:
+    radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.65) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 3px
+    );
+  --game-pattern-opacity: 1;
+
+  --board-bg: #000;
+  --board-border: #fff;
+  --board-border-width: 1px;
+  --board-radius: 0;
+  --board-padding: 8px;
+  --board-gap: 1px;
+  --board-shadow: 0 0 0 8px #050505, 0 0 0 9px #fff;
+
+  --cell-radius: 0;
+  --apple-radius: 0;
+  --cell-empty: #111;
+  --cell-empty-shadow: none;
+  --cell-snake: #f5f5f5;
+  --cell-snake-shadow: none;
+  --cell-apple: #fff;
+  --cell-apple-shadow: inset 0 0 0 2px #000;
+  --cell-apple-border: none;
+
+  --overlay-bg: rgba(0, 0, 0, 0.82);
+  --overlay-blur: none;
+  --btn-bg: #fff;
+  --btn-text: #000;
+  --btn-radius: 0;
+  --btn-border: 1px solid #fff;
+  --btn-shadow: none;
+  --title-color: #fff;
+  --title-shadow: none;
+
+  --panel-bg: transparent;
+  --panel-border: rgba(255, 255, 255, 0.35);
+  --panel-active-bg: #fff;
+  --panel-active-shadow: none;
+  --theme-accent: #fff;
+  --theme-btn-radius: 0;
+
+  .game__theme-btn--active {
+    color: #000;
+  }
+}

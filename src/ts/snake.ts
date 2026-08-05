@@ -1,65 +1,66 @@
-import { Grid } from './grid';
-type Direction = 'Up' | 'Down' | 'Left' | 'Right'; 
-export class Snake {
-  public direction: Direction = 'Right';
-  public oldDirection: Direction = 'Right';
-  public xCoord: number = 0;
-  public yCoord: number = 0;
-  public isFirstMove: boolean = true;
-  public isMoving: boolean = false;
+import { Grid } from './grid'
 
-  constructor(public grid: Grid, public isTail: boolean = false, readonly id: number, x?: number, y?: number) {
-    const centerCoord: number = Math.trunc(this.grid.size / 2);
-    
-    this.xCoord = x !== undefined ? x : centerCoord;
-    this.yCoord = y !== undefined ? y : centerCoord;
-    
-    if (!this.isTail) {
-      this.setEventListeners();
+type Direction = 'Up' | 'Down' | 'Left' | 'Right'
+
+export class Snake {
+  public direction: Direction = 'Right'
+  public oldDirection: Direction = 'Right'
+  public xCoord = 0
+  public yCoord = 0
+  public isFirstMove = true
+  public isMoving = false
+
+  private onKeyDown = (event: KeyboardEvent): void => {
+    if (!this.grid.isRunning) return
+
+    const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
+    if (!arrowKeys.includes(event.key)) return
+
+    event.preventDefault()
+
+    this.oldDirection = this.direction
+    switch (event.key) {
+      case 'ArrowUp':
+        if (this.oldDirection !== 'Down') this.direction = 'Up'
+        break
+      case 'ArrowDown':
+        if (this.oldDirection !== 'Up') this.direction = 'Down'
+        break
+      case 'ArrowLeft':
+        if (this.oldDirection !== 'Right') this.direction = 'Left'
+        break
+      case 'ArrowRight':
+        if (this.oldDirection !== 'Left') this.direction = 'Right'
+        break
     }
   }
 
-  setEventListeners() {
-    document.addEventListener('keydown', (event) => {
-      const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
-      if (arrowKeys.includes(event.key)) {
-        event.preventDefault();
-        
-        const oldXCoord = this.xCoord;
-        const oldYCoord = this.yCoord;
+  constructor(
+    public grid: Grid,
+    public isTail: boolean = false,
+    readonly id: number,
+    x?: number,
+    y?: number,
+  ) {
+    const centerCoord = Math.trunc(this.grid.size / 2)
 
-        this.oldDirection = this.direction;
-        switch(event.key) {
-          case 'ArrowUp':
-            this.direction = 'Up';
-            // this.yCoord -= 1;
-            break;
-          case 'ArrowDown':
-            this.direction = 'Down';
-            // this.yCoord += 1;
-            break;
-          case 'ArrowLeft':
-            this.direction = 'Left';
-            // this.xCoord -= 1;
-            break;
-          case 'ArrowRight':
-            this.direction = 'Right';
-            // this.xCoord += 1;
-            break;
-        }
-        // console.log(this.grid)
-        // console.log(this.grid.checkArea(this));
-        // this.grid.checkArea(this)
-        // if (this.grid.checkArea(this)) {
-        if (this.isMoving === false) {
-          this.grid.move(this, false)
-        }
-        // this.moveSnake(oldXCoord, oldYCoord);
-      }
-    });
+    this.xCoord = x !== undefined ? x : centerCoord
+    this.yCoord = y !== undefined ? y : centerCoord
+
+    if (!this.isTail) {
+      this.setEventListeners()
+    }
   }
 
-  moveSnake(_oldX: number, _oldY: number) {
-    this.grid.move(this);
+  setEventListeners(): void {
+    document.addEventListener('keydown', this.onKeyDown)
+  }
+
+  destroyListeners(): void {
+    document.removeEventListener('keydown', this.onKeyDown)
+  }
+
+  moveSnake(_oldX: number, _oldY: number): void {
+    this.grid.move(this)
   }
 }
