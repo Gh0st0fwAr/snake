@@ -201,6 +201,12 @@ export class Grid {
         new Snake(this, true, this.tailArr.length, lastEl.xCoord, lastEl.yCoord),
       )
       this.makeApple()
+
+      this.render()
+      this.cellMap[newX][newY]?.playEat()
+      const grown = this.tailArr[this.tailArr.length - 1]
+      this.cellMap[grown.xCoord]?.[grown.yCoord]?.playGrow()
+      return
     }
 
     this.render()
@@ -279,6 +285,7 @@ export class Grid {
 
     if (this.cellMap[x]?.[y]) {
       this.cellMap[x][y].setApple()
+      this.cellMap[x][y].playAppleSpawn()
     }
   }
 }

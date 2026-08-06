@@ -26,7 +26,7 @@ export class Cell {
 
   public setSnake(): void {
     if (!this.cell) return
-    this.cell.classList.remove('game__cell--apple')
+    this.cell.classList.remove('game__cell--apple', 'game__cell--apple-spawn')
     this.cell.classList.add('game__cell--snake')
     this.isBlack = true
   }
@@ -41,8 +41,39 @@ export class Cell {
 
   public clearVisual(): void {
     if (!this.cell) return
-    this.cell.classList.remove('game__cell--snake', 'game__cell--apple')
+    this.cell.classList.remove(
+      'game__cell--snake',
+      'game__cell--apple',
+      'game__cell--apple-spawn',
+    )
     this.isBlack = false
+  }
+
+  public playEat(): void {
+    this.playFx('game__cell--eat')
+  }
+
+  public playGrow(): void {
+    this.playFx('game__cell--grow')
+  }
+
+  public playAppleSpawn(): void {
+    this.playFx('game__cell--apple-spawn')
+  }
+
+  private playFx(className: string): void {
+    if (!this.cell) return
+    this.cell.classList.remove(className)
+    // принудительный reflow, чтобы анимация перезапустилась
+    void this.cell.offsetWidth
+    this.cell.classList.add(className)
+
+    const onEnd = (event: AnimationEvent): void => {
+      if (event.target !== this.cell) return
+      this.cell?.classList.remove(className)
+      this.cell?.removeEventListener('animationend', onEnd)
+    }
+    this.cell.addEventListener('animationend', onEnd)
   }
 
   /** @deprecated используйте setSnake / setApple / clearVisual */
